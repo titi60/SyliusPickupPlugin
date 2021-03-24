@@ -5,4 +5,4 @@ sylius_shipping:
     resources:
         shipment:
             classes:
-                model: Magentix\SyliusPickupPlugin\Entity\Shipment
+                model: Titi60\SyliusPickupPlugin\Entity\Shipment

@@ -7,7 +7,7 @@
  */
 declare(strict_types=1);
 
-namespace Magentix\SyliusPickupPlugin\Entity;
+namespace Titi60\SyliusPickupPlugin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Core\Model\Shipment as BaseShipment;

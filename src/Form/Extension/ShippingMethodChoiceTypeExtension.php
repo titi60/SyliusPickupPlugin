@@ -7,9 +7,9 @@
  */
 declare(strict_types=1);
 
-namespace Magentix\SyliusPickupPlugin\Form\Extension;
+namespace Titi60\SyliusPickupPlugin\Form\Extension;
 
-use Magentix\SyliusPickupPlugin\Shipping\Calculator\CalculatorInterface as PickupCalculatorInterface;
+use Titi60\SyliusPickupPlugin\Shipping\Calculator\CalculatorInterface as PickupCalculatorInterface;
 use Sylius\Bundle\ShippingBundle\Form\Type\ShippingMethodChoiceType;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 use Sylius\Component\Core\Model\ShippingMethod;

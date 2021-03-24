@@ -7,7 +7,7 @@
  */
 declare(strict_types=1);
 
-namespace Magentix\SyliusPickupPlugin\EventListener;
+namespace Titi60\SyliusPickupPlugin\EventListener;
 
 use Sylius\Component\Core\Repository\ShippingMethodRepositoryInterface;
 use Sylius\Component\Core\Repository\ShipmentRepositoryInterface;

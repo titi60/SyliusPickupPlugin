@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Magentix\SyliusPickupPlugin\Shipping\Calculator;
+namespace Titi60\SyliusPickupPlugin\Shipping\Calculator;
 
 use Sylius\Component\Shipping\Calculator\CalculatorInterface as BaseCalculatorInterface;
 use Sylius\Component\Core\Model\AddressInterface;

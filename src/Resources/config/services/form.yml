@@ -1,6 +1,6 @@
 services:
     app.form.extension.type.checkout_shipment:
-        class: Magentix\SyliusPickupPlugin\Form\Extension\CheckoutShipmentTypeExtension
+        class: Titi60\SyliusPickupPlugin\Form\Extension\CheckoutShipmentTypeExtension
         arguments:
             - "@sylius.registry.shipping_calculator"
             - "@sylius.repository.shipping_method"
@@ -9,7 +9,7 @@ services:
             - { name: form.type_extension, extended_type: Sylius\Bundle\CoreBundle\Form\Type\Checkout\ShipmentType }
 
     app.form.extension.type.shipping_method_choice:
-        class: Magentix\SyliusPickupPlugin\Form\Extension\ShippingMethodChoiceTypeExtension
+        class: Titi60\SyliusPickupPlugin\Form\Extension\ShippingMethodChoiceTypeExtension
         arguments:
             - "@sylius.registry.shipping_calculator"
         tags:

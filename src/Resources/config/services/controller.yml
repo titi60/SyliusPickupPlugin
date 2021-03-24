@@ -1,5 +1,5 @@
 services:
-    Magentix\SyliusPickupPlugin\Controller\PickupController:
+    Titi60\SyliusPickupPlugin\Controller\PickupController:
         public: true
         arguments:
             - "@sylius.registry.shipping_calculator"
