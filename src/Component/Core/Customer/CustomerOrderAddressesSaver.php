@@ -43,7 +43,7 @@ final class CustomerOrderAddressesSaver implements OrderAddressesSaverInterface
         }
 
         $this->addAddress($customer, $order->getBillingAddress());
-        if (!$order->getShipments()->current()->getPickupId()) {
+        if ($order->getShipments()->current() !== false && !$order->getShipments()->current()->getPickupId()) {
             $this->addAddress($customer, $order->getShippingAddress());
         }
     }
