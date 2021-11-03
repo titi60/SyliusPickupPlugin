@@ -19,12 +19,12 @@ use Sylius\Component\Shipping\Calculator\CalculatorInterface;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\Addressing\Model\CountryInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Intl\Intl;
+use Symfony\Component\Intl\Countries;
 
-final class PickupController extends Controller
+final class PickupController extends AbstractController
 {
 
     /**
@@ -38,15 +38,34 @@ final class PickupController extends Controller
     private $countryRepository;
 
     /**
+     * @var CartContextInterface
+     */
+    private $cartContext;
+    /**
+     * @var OrderRepositoryInterface
+     */
+    private $orderRepository;
+    /**
+     * @var ShippingMethodRepositoryInterface
+     */
+    private $shippingMethodRepository;
+
+    /**
      * @param ServiceRegistryInterface $calculatorRegistry
      * @param RepositoryInterface $countryRepository
      */
     public function __construct(
         ServiceRegistryInterface $calculatorRegistry,
-        RepositoryInterface $countryRepository
+        RepositoryInterface $countryRepository,
+        CartContextInterface $cartContext,
+        OrderRepositoryInterface $orderRepository,
+        ShippingMethodRepositoryInterface $shippingMethodRepository
     ) {
         $this->calculatorRegistry = $calculatorRegistry;
         $this->countryRepository  = $countryRepository;
+        $this->cartContext = $cartContext;
+        $this->orderRepository = $orderRepository;
+        $this->shippingMethodRepository = $shippingMethodRepository;
     }
 
     /**
@@ -163,7 +182,7 @@ final class PickupController extends Controller
     protected function getContext(): CartContextInterface
     {
         /** @var CartContextInterface $context */
-        $context = $this->get('sylius.context.cart');
+        $context = $this->cartContext;
 
         return $context;
     }
@@ -176,7 +195,7 @@ final class PickupController extends Controller
     protected function getOrderRepository(): OrderRepositoryInterface
     {
         /** @var OrderRepositoryInterface $orderRepository */
-        $orderRepository = $this->get('sylius.repository.order');
+        $orderRepository = $this->orderRepository;
 
         return $orderRepository;
     }
@@ -189,7 +208,7 @@ final class PickupController extends Controller
     protected function getShippingMethodRepository(): ShippingMethodRepositoryInterface
     {
         /** @var ShippingMethodRepositoryInterface $shippingMethodRepository */
-        $shippingMethodRepository = $this->get('sylius.repository.shipping_method');
+        $shippingMethodRepository = $this->shippingMethodRepository;
 
         return $shippingMethodRepository;
     }
@@ -199,7 +218,7 @@ final class PickupController extends Controller
      */
     private function getAvailableCountries(): array
     {
-        $countries = Intl::getRegionBundle()->getCountryNames();
+        $countries = Countries::getNames();
 
         /** @var CountryInterface[] $definedCountries */
         $definedCountries = $this->countryRepository->findAll();

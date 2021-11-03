@@ -1,7 +1,7 @@
 magentix_sylius_pickup_checkout_pickup_list:
     path: /pickup-list/{method}
     defaults:
-        _controller: MagentixSyliusPickupPlugin:Pickup:list
+        _controller: magentix_sylius_pickup_plugin.shop.pick_up.controller:listAction
 
 magentix_sylius_pickup_ajax_pickup_list:
     path: /pickup-list

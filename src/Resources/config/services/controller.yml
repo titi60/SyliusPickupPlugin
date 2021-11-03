@@ -1,6 +1,13 @@
 services:
-    Titi60\SyliusPickupPlugin\Controller\PickupController:
+    magentix_sylius_pickup_plugin.shop.pick_up.controller:
+        class: Titi60\SyliusPickupPlugin\Controller\PickupController
         public: true
         arguments:
             - "@sylius.registry.shipping_calculator"
             - "@sylius.repository.country"
+            - "@sylius.context.cart"
+            - "@sylius.repository.order"
+            - "@sylius.repository.shipping_method"
+        tags: ['container.service_subscriber']
+        calls:
+            - ['setContainer', ['@Psr\Container\ContainerInterface']]
